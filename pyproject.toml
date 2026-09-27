@@ -1,6 +1,6 @@
 [project]
 name = "nbdmt"
-version = "0.3.0"
+version = "0.3.1"
 requires-python = ">=3.14.7"
 dependencies = [
     "textual>=8.2.8",
