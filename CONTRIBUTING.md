@@ -1,3 +1,3 @@
 # Contributing to NbDMt
 
-This file is not ready *yet*
+This file is not ready _yet_
