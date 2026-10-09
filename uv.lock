@@ -4,5 +4,5 @@ requires-python = ">=3.14.7"
 
 [[package]]
 name = "nbdmt"
-version = "0.1.0"
+version = "0.4.4"
 source = { virtual = "." }
