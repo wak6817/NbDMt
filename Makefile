@@ -2,8 +2,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -O2
 CPPFLAGS =
 
-SRC_DIR = src/cli/tools
-OUT_DIR = dist/tools
+SRC_DIR = src/cli/tools/
+OUT_DIR = dist/tools/
 SOURCES = $(wildcard $(SRC_DIR)/*.c)
 BINS = $(patsubst $(SRC_DIR)/%.c,$(OUT_DIR)/%,$(SOURCES))
 DEPS =

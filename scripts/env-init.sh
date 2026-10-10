@@ -255,22 +255,116 @@ ij_yaml_align_values_properties = do_not_align
 ij_yaml_keep_indents_on_empty_lines = false
 ij_yaml_keep_line_breaks = true
 ij_yaml_space_before_colon = false
+
 EOF
 
   printf '%s\n' "Generated .editorconfig"
+
+  cat > .clang-format <<'EOF'
+BasedOnStyle: LLVM
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+IndentCaseLabels: true
+IndentGotoLabels: false
+AccessModifierOffset: -4
+
+# Braces: Allman
+BreakBeforeBraces: Allman
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+
+# Line length and wrapping
+ColumnLimit: 100
+ContinuationIndentWidth: 4
+AlignOperands: Align
+BreakBeforeBinaryOperators: None
+BreakConstructorInitializers: BeforeColon
+
+# Pointers and references
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+
+# Spacing
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: true
+SpaceInEmptyParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceBeforeAssignmentOperators: true
+SpaceInEmptyBlock: false
+
+# Function calls and declarations
+BinPackArguments: false
+BinPackParameters: false
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Alignment
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignTrailingComments: true
+
+# C and C++ compatibility
+Standard: c++11
+Cpp11BracedListStyle: true
+
+# Includes
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
+
+# Keep formatting predictable
+ReflowComments: true
+
+EOF
+
+  printf '%s\n' "Generated . clang-format"
+
+  cat > Makefile <<'EOF'
+CC = cc
+CFLAGS = -Wall -Wextra -O2
+CPPFLAGS =
+
+SRC_DIR = src/tools/
+OUT_DIR = dist/tools/
+SOURCES = $(wildcard $(SRC_DIR)/*.c)
+BINS = $(patsubst $(SRC_DIR)/%.c,$(OUT_DIR)/%,$(SOURCES))
+DEPS =
+
+.PHONY: all clean
+.DEFAULT_GOAL := all
+
+all: $(BINS)
+
+$(OUT_DIR)/%: $(SRC_DIR)/%.c
+	mkdir -p $(OUT_DIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@
+
+clean:
+	rm -rf $(OUT_DIR)
+
+EOF
 
   # --------------------------------------------------------------------
   # Directories
   # --------------------------------------------------------------------
 
   mkdir -p \
-    src \
-    assets/fonts \
-    assets/icons \
-    assets/sounds \
-    scripts \
-    page \
-    dist
+    src/tools \
+    assets/fonts/ \
+    assets/icons/ \
+    assets/sounds/ \
+    scripts/ \
+    page/pages/ \
+    dist/tools/
 
   printf '%s\n' "Generated project directories"
 
