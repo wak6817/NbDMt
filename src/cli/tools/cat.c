@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        fprintf(stderr, "usage: cat <file>\n");
+        fprintf(stderr, "usage: ./cat <file>\n");
         return 1;
     }
 

@@ -4,7 +4,7 @@ int main(int argc, char const *argv[])
 {
     if (argc < 2)
     {
-        fprintf(stderr, "usage: echo <text>\n");
+        fprintf(stderr, "usage: ./echo <text>\n");
         return 1;
     }
 
