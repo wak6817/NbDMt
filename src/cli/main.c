@@ -3,7 +3,7 @@
 //
 
 #include "main.h"
-#include "cmd/help.h"
+#include "cmd/help/help.h"
 
 #include <stdio.h>
 #include <string.h>
