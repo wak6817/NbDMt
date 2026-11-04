@@ -8,4 +8,6 @@ add_executable(NbDMt
         src/cli/cmd/help/help.c
         src/cli/cmd/help/help.h
         src/cli/main.c
-        src/cli/main.h)
+        src/cli/main.h
+        src/cli/cmd/gen/proj/c/proj.c
+        src/cli/cmd/gen/proj/c/proj.h)

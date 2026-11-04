@@ -4,6 +4,7 @@
 
 #include "main.h"
 #include "cmd/help/help.h"
+#include "cmd/gen/proj/c/proj.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -22,6 +23,8 @@ int main(const int argc, char *argv[]) {
 static int check_command(const char command[]) {
     if (strcmp(command, "help") == 0) {
         disp_help();
+    } else if (strcmp(command, "gen-proj-c") == 0) {
+        gen_proj_c();
     } else {
         printf("usage: nbdmt <action> (err. UK_CMD)\n");
     }
